@@ -25,7 +25,7 @@ class Shrub :
         
     print("\n".join(info))
 
-    shrubs = [
+shrubs = [
     Shrub("Abelia", "Abelia", "1.5m - 2m", "1m - 1.5m", "Green", "Temperate", 10, "Pruner"),
     Shrub("Acer", "Maple", "2m - 4m", "1.5m - 3m", "Red, Green", "Temperate", 20, "Shears"),
     Shrub("Actinidia", "Actinidia", "3m - 5m", "2m - 3m", "Green", "Temperate", 15, "Pruner"),
