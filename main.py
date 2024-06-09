@@ -1,4 +1,4 @@
-from Topic_Shrubs_UNRA import Shrub, shrubs_data
+from Classes.shrubs import Shrub, shrubs_data
 import tkinter as tk
 from tkinter import messagebox
 
@@ -31,18 +31,18 @@ def find_my_shrub():
             score = 0
 
             # height
-            shrub_height_min, shrub_height_max = map(float, shrub.height.split("m - "))
+            shrub_height_min, shrub_height_max = map(float, shrub.height.split(" - "))
             if shrub_height_min <= height_max and shrub_height_max >= height_min:
                 score += 1
 
             # width
-            shrub_width_min, shrub_width_max = map(float, shrub.width.split("m - "))
+            shrub_width_min, shrub_width_max = map(float, shrub.width.split(" - "))
             if shrub_width_min <= width_max and shrub_width_max >= width_min:
                 score += 1
 
             # color
             shrub_colors = shrub.color.split(", ")
-            color_matches = sum(1.5 for color in selected_colors if color in shrub_colors)
+            color_matches = sum(1 for color in selected_colors if color in shrub_colors)
             score += color_matches
 
             # climate
