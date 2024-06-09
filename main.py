@@ -12,7 +12,17 @@ def find_my_shrub():
         selected_colors = [color_var.get() for color_var in color_vars if color_var.get()]
         selected_climate = climate_var.get()
         average_lifespan = int(average_lifespan_entry.get())
-        essential_tool = essential_tool_entry.get()
+        essential_tool = essential_tool_var.get()
+
+        # Print user inputs for debugging
+        print("Height Min:", height_min)
+        print("Height Max:", height_max)
+        print("Width Min:", width_min)
+        print("Width Max:", width_max)
+        print("Selected Colors:", selected_colors)
+        print("Selected Climate:", selected_climate)
+        print("Average Lifespan:", average_lifespan)
+        print("Essential Tool:", essential_tool)
 
         results = []
 
@@ -50,22 +60,26 @@ def find_my_shrub():
             if score > 0:
                 results.append((shrub, score))
 
+        # sorting results by score, high to low!
         results.sort(key=lambda x: x[1], reverse=True)
 
-        # output
-        output = ""
-        for shrub, score in results[:5]:
-            output += f"{shrub.display_info()}\nScore: {score}\n\n"
+        # get top 5 shrubs!
+        top_matches = results[:5]
 
-        messagebox.showinfo("Top 5 Matching Shrubs", output)
+        # Display results
+        result_str = ""
+        for shrub, score in top_matches:
+            result_str += f"{shrub.display_info()}\nScore: {score}\n\n"
+
+        messagebox.showinfo("Top 5 Matching Shrubs", result_str)
 
     except ValueError:
         messagebox.showerror("Input Error", "Please enter valid numerical values for height, width, and lifespan ranges.")
 
-def extract_colors(shrubs):
+def extract_colors(Shrubs):
     colors = set()
-    for shrub in shrubs:
-        colors.update(shrub.color.split(", "))
+    for Shrub in Shrubs:
+        colors.update(Shrub.color.split(", "))
     return colors
 
 root = tk.Tk()
@@ -113,8 +127,10 @@ average_lifespan_entry.grid(row=4 + len(colors) // 5, column=1)
 
 # Essential Tool
 tk.Label(root, text="Essential Tool").grid(row=5 + len(colors) // 5, column=0)
-essential_tool_entry = tk.Entry(root)
-essential_tool_entry.grid(row=5 + len(colors) // 5, column=1)
+essential_tool_var = tk.StringVar()
+essential_tools = ["Pruner", "Shears", "Spade", "Hoe", "Rake"]
+essential_tool_menu = tk.OptionMenu(root, essential_tool_var, *essential_tools)
+essential_tool_menu.grid(row=5 + len(colors) // 5, column=1)
 
 # Button
 find_button = tk.Button(root, text="Find My Shrub", command=find_my_shrub, bg='green', font=("Helvetica", 12, "bold"))
