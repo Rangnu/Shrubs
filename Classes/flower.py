@@ -1,16 +1,9 @@
-from .plant import Plant
+from .ShrubPlant import ShrubPlants
 
-class Flower(Plant):
-    def display_info(self):
-        return (f"Flower Info:\n"
-                f"Name: {self.name}\n"
-                f"Species: {self.species}\n"
-                f"Height: {self.height}\n"
-                f"Width: {self.width}\n"
-                f"Color: {self.color}\n"
-                f"Climate: {self.climate}\n"
-                f"Average Lifespan: {self.average_lifespan} years\n"
-                f"Essential Tool: {self.essential_tool}")
+class Flower(ShrubPlants):
+    def __init__(self, name, species, height, width, color, climate, average_lifespan, essential_tool):
+        super().__init__(name, species, height, width, color, climate, average_lifespan, essential_tool)
+
 
 flowers_data = [
     Flower("Rose", "Rose", "0.5m - 1m", "0.5m - 1m", "Red", "Temperate", 2, "Pruner"),
