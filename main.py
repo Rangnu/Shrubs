@@ -1,4 +1,6 @@
 from Classes.shrubs import Shrub, shrubs_data
+from Classes.flower import Flower, flowers_data
+from Classes.tree import Tree, trees_data
 import tkinter as tk
 from tkinter import messagebox
 
@@ -14,64 +16,120 @@ def find_my_shrub():
         average_lifespan = int(average_lifespan_entry.get())
         essential_tool = essential_tool_var.get()
 
-        # Print user inputs for debugging
-        print("Height Min:", height_min)
-        print("Height Max:", height_max)
-        print("Width Min:", width_min)
-        print("Width Max:", width_max)
-        print("Selected Colors:", selected_colors)
-        print("Selected Climate:", selected_climate)
-        print("Average Lifespan:", average_lifespan)
-        print("Essential Tool:", essential_tool)
-
-        results = []
-
-        # matching logics
+        # Logic to find best shrubs
+        shrub_results = []
         for shrub in shrubs_data:
             score = 0
 
-            # height
+            # Matching logic
             shrub_height_min, shrub_height_max = map(float, shrub.height.split(" - "))
             if shrub_height_min <= height_max and shrub_height_max >= height_min:
                 score += 1
 
-            # width
             shrub_width_min, shrub_width_max = map(float, shrub.width.split(" - "))
             if shrub_width_min <= width_max and shrub_width_max >= width_min:
                 score += 1
 
-            # color
             shrub_colors = shrub.color.split(", ")
             color_matches = sum(1 for color in selected_colors if color in shrub_colors)
             score += color_matches
 
-            # climate
             if selected_climate in shrub.climate:
                 score += 1
 
-            # lifespan
             if shrub.average_lifespan == average_lifespan:
                 score += 1
 
-            # essential tool
             if essential_tool in shrub.essential_tool:
                 score += 1
 
             if score > 0:
-                results.append((shrub, score))
+                shrub_results.append((shrub, score))
 
-        # sorting results by score, high to low!
-        results.sort(key=lambda x: x[1], reverse=True)
+        # Logic to find best flowers
+        flower_results = []
+        for flower in flowers_data:
+            score = 0
 
-        # get top 5 shrubs!
-        top_matches = results[:5]
+            # Matching logic
+            flower_height_min, flower_height_max = map(float, flower.height.split(" - "))
+            if flower_height_min <= height_max and flower_height_max >= height_min:
+                score += 1
+
+            flower_width_min, flower_width_max = map(float, flower.width.split(" - "))
+            if flower_width_min <= width_max and flower_width_max >= width_min:
+                score += 1
+
+            flower_colors = flower.color.split(", ")
+            color_matches = sum(1 for color in selected_colors if color in flower_colors)
+            score += color_matches
+
+            if selected_climate in flower.climate:
+                score += 1
+
+            if flower.average_lifespan == average_lifespan:
+                score += 1
+
+            if essential_tool in flower.essential_tool:
+                score += 1
+
+            if score > 0:
+                flower_results.append((flower, score))
+
+        # Logic to find best trees
+        tree_results = []
+        for tree in trees_data:
+            score = 0
+
+            # Matching logic
+            tree_height_min, tree_height_max = map(float, tree.height.split(" - "))
+            if tree_height_min <= height_max and tree_height_max >= height_min:
+                score += 1
+
+            tree_width_min, tree_width_max = map(float, tree.width.split(" - "))
+            if tree_width_min <= width_max and tree_width_max >= width_min:
+                score += 1
+
+            tree_colors = tree.color.split(", ")
+            color_matches = sum(1 for color in selected_colors if color in tree_colors)
+            score += color_matches
+
+            if selected_climate in tree.climate:
+                score += 1
+
+            if tree.average_lifespan == average_lifespan:
+                score += 1
+
+            if essential_tool in tree.essential_tool:
+                score += 1
+
+            if score > 0:
+                tree_results.append((tree, score))
+
+        # Sorting results by score, high to low!
+        shrub_results.sort(key=lambda x: x[1], reverse=True)
+        flower_results.sort(key=lambda x: x[1], reverse=True)
+        tree_results.sort(key=lambda x: x[1], reverse=True)
+
+        # Get top 5 results for each plant type
+        top_shrubs = shrub_results[:5]
+        top_flowers = flower_results[:5]
+        top_trees = tree_results[:5]
 
         # Display results
-        result_str = ""
-        for shrub, score in top_matches:
+        result_str = "Best Shrubs:\n"
+        for shrub, score in top_shrubs:
             result_str += f"{shrub.display_info()}\nScore: {score}\n\n"
 
-        messagebox.showinfo("Top 5 Matching Shrubs", result_str)
+        result_str += "Best Flowers:\n"
+        for flower, score in top_flowers:
+            result_str += f"{flower.display_info()}\nScore: {score}\n\n"
+
+        result_str += "Best Trees:\n"
+        for tree, score in top_trees:
+            result_str += f"{tree.display_info()}\nScore: {score}\n\n"
+
+        messagebox.showinfo("Best Plants", result_str)
 
     except ValueError:
         messagebox.showerror("Input Error", "Please enter valid numerical values for height, width, and lifespan ranges.")
@@ -81,6 +139,7 @@ def extract_colors(Shrubs):
     for Shrub in Shrubs:
         colors.update(Shrub.color.split(", "))
     return colors
+
 
 root = tk.Tk()
 root.title("Your Own Shrub Finder")
@@ -116,7 +175,7 @@ for i, color in enumerate(colors):
 # Climate selecting
 tk.Label(root, text="Climate").grid(row=3 + len(colors) // 5, column=0)
 climate_var = tk.StringVar(value="Temperate")
-climates = ["Temperate", "Arid", "Tropical", "Subtropical", "Cold"]
+climates = ["Temperate", "Arid", "Tropical", "Subttropical", "Cold"]
 climate_menu = tk.OptionMenu(root, climate_var, *climates)
 climate_menu.grid(row=3 + len(colors) // 5, column=1)
 
