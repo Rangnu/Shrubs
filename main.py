@@ -11,6 +11,7 @@ def calculate_score(plant, height_min, height_max, width_min, width_max, selecte
     plant_height_min, plant_height_max = map(float, plant._height.split(" - "))
     if plant_height_min <= height_max and plant_height_max >= height_min:
         score += 1
+
     
     # Matching logic for width
     plant_width_min, plant_width_max = map(float, plant._width.split(" - "))
@@ -59,6 +60,19 @@ def extract_colors(all_data):
     return colors
 
 def find_top_plants():
+    # Print the values retrieved from the entry fields
+    print("Height Min:", height_min_entry.get())
+    print("Height Max:", height_max_entry.get())
+    print("Width Min:", width_min_entry.get())
+    print("Width Max:", width_max_entry.get())
+    print("Average Lifespan:", average_lifespan_entry.get())
+    selected_colors = [color_var.get() for color_var in color_vars if color_var.get()]
+    print("Selected Colors:", selected_colors)
+    selected_climate = climate_var.get()
+    print("Selected Climate:", selected_climate)
+    essential_tool = essential_tool_var.get()
+    print("Essential Tool:", essential_tool)
+
     try:
         # Retrieve user inputs
         height_min = float(height_min_entry.get())
