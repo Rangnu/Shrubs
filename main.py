@@ -37,7 +37,7 @@ def calculate_score(plant, MinHeight, MaxHeight, MinWidth, MaxWidth, selected_co
         score += 1
     
     # Matching logic for average lifespan
-    if int(plant._average_lifespan) == average_lifespan:
+    if int(plant._average_lifespan) <= average_lifespan:
         score += 1
     
     # Matching logic for essential tool
