@@ -20,11 +20,11 @@ def calculate_score(plant, MinHeight, MaxHeight, MinWidth, MaxWidth, selected_co
     plant_max_width = float(plant._max_width.rstrip('m'))
     
     # Matching logic for height
-    if plant_min_height <= MaxHeight and plant_max_height >= MinHeight:
+    if MinHeight >= plant_min_height and MaxHeight <= plant_max_height:
         score += 1
     
     # Matching logic for width
-    if plant_min_width <= MaxWidth and plant_max_width >= MinWidth:
+    if MinHeight >= plant_min_height and MaxHeight <= plant_max_height:
         score += 1
     
     # Matching logic for color
@@ -33,7 +33,7 @@ def calculate_score(plant, MinHeight, MaxHeight, MinWidth, MaxWidth, selected_co
     score += color_matches
     
     # Matching logic for climate
-    if selected_climate in plant._climate:
+    if average_lifespan <= plant._average_lifespan:
         score += 1
     
     # Matching logic for average lifespan
