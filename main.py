@@ -157,7 +157,7 @@ if __name__ == '__main__':
     # Essential Tool
     Label(root, text="Essential Tool").grid(row=5 + len(colors) // 5, column=0)
     essential_tool_var = StringVar()
-    essential_tools = ["Pruner", "Shears", "Spade", "Hoe", "Rake"]
+    essential_tools = ["Pruner", "Shears", "Spade", "Hoe", "Rake","Hedge Shears", "Lopper", "Chainsaw", "Axe", "Handsaw", "Pruning Shears", "Pruning Shears", "Garden Trowel", "Misting Bottle", "Watering Can"]
     essential_tool_menu = OptionMenu(root, essential_tool_var, *essential_tools)
     essential_tool_menu.grid(row=5 + len(colors) // 5, column=1)
 

@@ -1,5 +1,8 @@
 import unittest
 from main import calculate_score, find_top_ShrubPlants, extract_colors
+from Classes.shrubs import Shrub  # Assuming Shrub class is imported correctly
+from Classes.flower import Flower  # Assuming Flower class is imported correctly
+from Classes.tree import Tree  # Assuming Tree class is imported correctly
 
 # Mock shrub data for testing
 class MockShrub:
@@ -35,11 +38,7 @@ class TestShrubFinderFunctions(unittest.TestCase):
 
     def test_find_top_ShrubPlants(self):
         top_plants = find_top_ShrubPlants(self.all_data, 1.0, 2.0, 0.5, 1.0, ["Purple"], "Tropical", 10, "Shears")
-        
-        # Print debug info
-        for plant, score in top_plants:
-            print(f"Plant: {plant.name}, Score: {score}")
-        
+
         self.assertEqual(len(top_plants), 3, "There should be three top plants")
         self.assertEqual(top_plants[0][0].name, "Shrub3", "The top plant should be Shrub3")
 
