@@ -4,6 +4,9 @@ class Flower(ShrubPlants):
     def __init__(self, name, species, MinHeight, MaxHeight, MinWidth, MaxWidth, color, climate, average_lifespan, essential_tool):
         super().__init__(name, species, MinHeight, MaxHeight, MinWidth, MaxWidth, color, climate, average_lifespan, essential_tool)
 
+    def describe(self):
+        return f"★{self._name} is a flower.★"
+
 flowers_data = [
     Flower("Rose", "Rose", "0.5m", "1m", "0.5m", "1m", "Red", "Temperate", 2, "Pruner"),
     Flower("Tulip", "Tulip", "0.3m", "0.6m", "0.3m", "0.6m", "Yellow", "Temperate", 1, "Shears"),

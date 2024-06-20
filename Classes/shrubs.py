@@ -4,6 +4,9 @@ class Shrub(ShrubPlants):
     def __init__(self, name, species, MinHeight, MaxHeight, MinWidth, MaxWidth, color, climate, average_lifespan, essential_tool):
         super().__init__(name, species, MinHeight, MaxHeight, MinWidth, MaxWidth, color, climate, average_lifespan, essential_tool)
 
+    def describe(self):
+        return f"★{self._name} is a normal shrub.★"
+
 shrubs_data = [
     Shrub("Abelia", "Abelia", "1.5m", "2m", "1m", "1.5m", "Green", "Temperate", 10, "Pruner"),
     Shrub("Acer", "Maple", "2m", "4m", "1.5m", "3m", "Red, Green", "Temperate", 20, "Shears"),

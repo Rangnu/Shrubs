@@ -12,7 +12,7 @@ class ShrubPlants:
         self._essential_tool = essential_tool
     
     def display_info(self):
-        return (f"ShrubPlants Info:\n"
+        return (f"↓ShrubPlants Info↓\n"
                 f"Name: {self._name}\n"
                 f"Species: {self.species}\n"
                 f"Height Range: {self._min_height} - {self._max_height}\n"
