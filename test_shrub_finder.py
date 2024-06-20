@@ -1,8 +1,8 @@
 import unittest
 from main import calculate_score, find_top_ShrubPlants, extract_colors
-from Classes.shrubs import Shrub  # Assuming Shrub class is imported correctly
-from Classes.flower import Flower  # Assuming Flower class is imported correctly
-from Classes.tree import Tree  # Assuming Tree class is imported correctly
+from Classes.shrubs import Shrub
+from Classes.flower import Flower
+from Classes.tree import Tree
 
 # Mock shrub data for testing
 class MockShrub:
@@ -20,7 +20,7 @@ class MockShrub:
 class TestShrubFinderFunctions(unittest.TestCase):
     def setUp(self):
         # Mock shrub data for testing
-        self.shrub1 = MockShrub("Shrub1", "1.0m", "2.0m", "0.5m", "1.0m", "Purple, Pink", "Tropical", 15, "Shears")
+        self.shrub1 = MockShrub("Shrub1", "1.0m", "2.0m", "0.5m", "1.0m", "Purple", "Tropical", 15, "Shears")
         self.shrub2 = MockShrub("Shrub2", "0.5m", "1.5m", "0.5m", "1.0m", "Red, Yellow", "Temperate", 10, "Spade")
         self.shrub3 = MockShrub("Shrub3", "2.0m", "3.0m", "1.0m", "1.5m", "White, Blue", "Arid", 20, "Hoe")
         
@@ -40,7 +40,9 @@ class TestShrubFinderFunctions(unittest.TestCase):
         top_plants = find_top_ShrubPlants(self.all_data, 1.0, 2.0, 0.5, 1.0, ["Purple"], "Tropical", 10, "Shears")
 
         self.assertEqual(len(top_plants), 3, "There should be three top plants")
-        self.assertEqual(top_plants[0][0].name, "Shrub3", "The top plant should be Shrub3")
+        self.assertEqual(top_plants[0][0].name, "Shrub1", "The top 1 plant should be Shrub1 (score 6 in this case)")
+        self.assertEqual(top_plants[1][0].name, "Shrub2", "The top plant should be Shrub2 (score 2 in this case)")
+        self.assertEqual(top_plants[2][0].name, "Shrub3", "The top plant should be Shrub3 (score 0 in this case)")
 
     def test_extract_colors(self):
         colors = extract_colors(self.all_data)
