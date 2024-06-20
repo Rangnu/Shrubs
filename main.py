@@ -108,61 +108,62 @@ def find_top_plants():
     
     except ValueError:
         messagebox.showerror("Input Error", "Please enter valid numerical values for height, width, and lifespan ranges.")
+        
+if __name__ == '__main__':
+    root = Tk()
+    root.title("Your Own Shrub Finder")
 
-root = Tk()
-root.title("Your Own Shrub Finder")
+    # Height input box
+    Label(root, text="Height Range (m) ->").grid(row=0, column=0)
+    Label(root, text="Min").grid(row=0, column=1)
+    MinHeight_entry = Entry(root)
+    MinHeight_entry.grid(row=0, column=2)
+    Label(root, text="Max").grid(row=0, column=3)
+    MaxHeight_entry = Entry(root)
+    MaxHeight_entry.grid(row=0, column=4)
 
-# Height input box
-Label(root, text="Height Range (m) ->").grid(row=0, column=0)
-Label(root, text="Min").grid(row=0, column=1)
-MinHeight_entry = Entry(root)
-MinHeight_entry.grid(row=0, column=2)
-Label(root, text="Max").grid(row=0, column=3)
-MaxHeight_entry = Entry(root)
-MaxHeight_entry.grid(row=0, column=4)
+    # Width input box
+    Label(root, text="Width Range (m) ->").grid(row=1, column=0)
+    Label(root, text="Min").grid(row=1, column=1)
+    MinWidth_entry = Entry(root)
+    MinWidth_entry.grid(row=1, column=2)
+    Label(root, text="Max").grid(row=1, column=3)
+    MaxWidth_entry = Entry(root)
+    MaxWidth_entry.grid(row=1, column=4)
 
-# Width input box
-Label(root, text="Width Range (m) ->").grid(row=1, column=0)
-Label(root, text="Min").grid(row=1, column=1)
-MinWidth_entry = Entry(root)
-MinWidth_entry.grid(row=1, column=2)
-Label(root, text="Max").grid(row=1, column=3)
-MaxWidth_entry = Entry(root)
-MaxWidth_entry.grid(row=1, column=4)
+    # Colors
+    Label(root, text="Colors").grid(row=2, column=0)
+    # Combine all data for color extraction
+    all_data = shrubs_data + flowers_data + trees_data
+    colors = extract_colors(all_data)
+    color_vars = []
+    for i, color in enumerate(colors):
+        var = StringVar()
+        chk = Checkbutton(root, text=color, variable=var, onvalue=color, offvalue="")
+        chk.grid(row=2 + i // 5, column=1 + i % 5)
+        color_vars.append(var)
 
-# Colors
-Label(root, text="Colors").grid(row=2, column=0)
-# Combine all data for color extraction
-all_data = shrubs_data + flowers_data + trees_data
-colors = extract_colors(all_data)
-color_vars = []
-for i, color in enumerate(colors):
-    var = StringVar()
-    chk = Checkbutton(root, text=color, variable=var, onvalue=color, offvalue="")
-    chk.grid(row=2 + i // 5, column=1 + i % 5)
-    color_vars.append(var)
+    # Climate selecting
+    Label(root, text="Climate").grid(row=3 + len(colors) // 5, column=0)
+    climate_var = StringVar(value="Temperate")
+    climates = ["Temperate", "Arid", "Tropical", "Subtropical", "Cold"]
+    climate_menu = OptionMenu(root, climate_var, *climates)
+    climate_menu.grid(row=3 + len(colors) // 5, column=1)
 
-# Climate selecting
-Label(root, text="Climate").grid(row=3 + len(colors) // 5, column=0)
-climate_var = StringVar(value="Temperate")
-climates = ["Temperate", "Arid", "Tropical", "Subtropical", "Cold"]
-climate_menu = OptionMenu(root, climate_var, *climates)
-climate_menu.grid(row=3 + len(colors) // 5, column=1)
+    # Lifespan
+    Label(root, text="Average Lifespan").grid(row=4 + len(colors) // 5, column=0)
+    average_lifespan_entry = Entry(root)
+    average_lifespan_entry.grid(row=4 + len(colors) // 5, column=1)
 
-# Lifespan
-Label(root, text="Average Lifespan").grid(row=4 + len(colors) // 5, column=0)
-average_lifespan_entry = Entry(root)
-average_lifespan_entry.grid(row=4 + len(colors) // 5, column=1)
+    # Essential Tool
+    Label(root, text="Essential Tool").grid(row=5 + len(colors) // 5, column=0)
+    essential_tool_var = StringVar()
+    essential_tools = ["Pruner", "Shears", "Spade", "Hoe", "Rake"]
+    essential_tool_menu = OptionMenu(root, essential_tool_var, *essential_tools)
+    essential_tool_menu.grid(row=5 + len(colors) // 5, column=1)
 
-# Essential Tool
-Label(root, text="Essential Tool").grid(row=5 + len(colors) // 5, column=0)
-essential_tool_var = StringVar()
-essential_tools = ["Pruner", "Shears", "Spade", "Hoe", "Rake"]
-essential_tool_menu = OptionMenu(root, essential_tool_var, *essential_tools)
-essential_tool_menu.grid(row=5 + len(colors) // 5, column=1)
+    # Button
+    find_button = Button(root, text="Find My Shrub", command=find_top_plants, bg='green', font=("Helvetica", 12, "bold"))
+    find_button.grid(row=6 + len(colors) // 5, column=0, columnspan=8, pady=10)
 
-# Button
-find_button = Button(root, text="Find My Shrub", command=find_top_plants, bg='green', font=("Helvetica", 12, "bold"))
-find_button.grid(row=6 + len(colors) // 5, column=0, columnspan=8, pady=10)
-
-root.mainloop()
+    root.mainloop()
