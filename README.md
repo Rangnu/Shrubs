@@ -6,4 +6,9 @@ it will show you top 3 shrubs that suits ur requirements
 3. get your top 3 Shrub recommendations!
 
 Shrub lists = from wikipedia (A to Z)
-Widths = random values
+in data, Widths = random values
+
+
+--below is my ideanote before building program--
+
+![alt text](https://github.com/Rangnu/Shrubs/blob/main/ideanote/Screenshot_20240620_152427_Samsung%20Notes(1).jpg)
