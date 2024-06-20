@@ -6,7 +6,7 @@ it will show you top 3 shrubs that suits ur requirements
 3. get your top 3 Shrub recommendations!
 
 Shrub lists = from wikipedia (A to Z)
-Widths = random values
+in data, Widths = random values
 
 
 --below is my ideanote before building program--
