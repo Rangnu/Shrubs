@@ -41,8 +41,8 @@ class TestShrubFinderFunctions(unittest.TestCase):
 
         self.assertEqual(len(top_plants), 3, "There should be three top plants")
         self.assertEqual(top_plants[0][0].name, "Shrub1", "The top 1 plant should be Shrub1 (score 6 in this case)")
-        self.assertEqual(top_plants[1][0].name, "Shrub2", "The top plant should be Shrub2 (score 2 in this case)")
-        self.assertEqual(top_plants[2][0].name, "Shrub3", "The top plant should be Shrub3 (score 0 in this case)")
+        self.assertEqual(top_plants[1][0].name, "Shrub2", "The top 2 plant should be Shrub2 (score 2 in this case)")
+        self.assertEqual(top_plants[2][0].name, "Shrub3", "The top 3 plant should be Shrub3 (score 0 in this case)")
 
     def test_extract_colors(self):
         colors = extract_colors(self.all_data)
