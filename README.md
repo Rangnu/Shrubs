@@ -7,3 +7,5 @@ it will show you top 3 shrubs that suits ur requirements
 
 Shrub lists = from wikipedia (A to Z)
 Widths = random values
+
+![alt text](https://github.com/Rangnu/Shrubs/blob/main/ideanote/Screenshot_20240620_152427_Samsung%20Notes(1).jpg)
