@@ -23,7 +23,7 @@ def calculate_score(plant, MinHeight, MaxHeight, MinWidth, MaxWidth, selected_co
         score += 1
     
     # Matching logic for width
-    if MinHeight >= plant_min_height and MaxHeight <= plant_max_height:
+    if MinWidth >= plant_min_width and MaxWidth <= plant_max_width:
         score += 1
     
     # Matching logic for color
@@ -32,11 +32,11 @@ def calculate_score(plant, MinHeight, MaxHeight, MinWidth, MaxWidth, selected_co
     score += color_matches
     
     # Matching logic for climate
-    if average_lifespan <= plant._average_lifespan:
+    if plant._climate == selected_climate:
         score += 1
     
     # Matching logic for average lifespan
-    if int(plant._average_lifespan) <= average_lifespan:
+    if plant._average_lifespan <= average_lifespan:
         score += 1
     
     # Matching logic for essential tool
@@ -56,8 +56,8 @@ def find_top_ShrubPlants(all_data, MinHeight, MaxHeight, MinWidth, MaxWidth, sel
     # Sorting results by score, high to low
     results.sort(key=lambda x: x[1], reverse=True)
     
-    # Get top 5 results
-    top_ShrubPlants = results[:5]
+    # Get top 3 results
+    top_ShrubPlants = results[:3]
     
     return top_ShrubPlants
 
@@ -99,11 +99,11 @@ def find_top_plants():
         top_plants = find_top_ShrubPlants(all_data, MinHeight, MaxHeight, MinWidth, MaxWidth, selected_colors, selected_climate, average_lifespan, essential_tool)
         
         # Display results
-        result_str = "Top 5 Best ShrubPlants:\n"
+        result_str = "Top 3 Best ShrubPlants:\n"
         for plant, score in top_plants:
             result_str += f"{plant.display_info()}\nScore: {score}\n\n"
         
-        messagebox.showinfo("Top 5 Best ShrubPlants", result_str)
+        messagebox.showinfo("Top 3 Best ShrubPlants", result_str)
     
     except ValueError:
         messagebox.showerror("Input Error", "Please enter valid numerical values for height, width, and lifespan ranges.")
