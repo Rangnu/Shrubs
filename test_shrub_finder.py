@@ -1,11 +1,11 @@
 import unittest
-from Classes.shrubs import Shrub, shrubs_data
-from Classes.flower import Flower, flowers_data
-from Classes.tree import Tree, trees_data
+from Classes.shrubs import Shrub  # Adjust import paths as needed
+from Classes.flower import Flower
+from Classes.tree import Tree
 from Classes.ShrubPlant import ShrubPlants
 from main import calculate_score, find_top_ShrubPlants, extract_colors
 
-# Dummy data for testing
+# Mock shrub data for testing
 class MockShrub:
     def __init__(self, name, min_height, max_height, min_width, max_width, color, climate, average_lifespan, essential_tool):
         self.name = name

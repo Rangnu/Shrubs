@@ -2,7 +2,6 @@ from tkinter import Tk, Label, Entry, OptionMenu, Checkbutton, Button, StringVar
 from Classes.shrubs import Shrub, shrubs_data
 from Classes.flower import Flower, flowers_data
 from Classes.tree import Tree, trees_data
-from Classes.ShrubPlant import ShrubPlants
 
 def calculate_score(plant, MinHeight, MaxHeight, MinWidth, MaxWidth, selected_colors, selected_climate, average_lifespan, essential_tool):
     score = 0
