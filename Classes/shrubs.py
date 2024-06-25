@@ -8,7 +8,7 @@ class Shrub(ShrubPlants):
         return f"★{self._name} is a normal shrub.★"
     
     def care_instructions(self):
-        return f"Shrub: '{self._name}' require moderate care with tools like: {self._essential_tool}"
+        return f"'{self._name}' require moderate care with tools like: {self._essential_tool}"
 
 shrubs_data = [
     Shrub("Abelia", "Abelia", "1.5m", "2m", "1m", "1.5m", "Green", "Temperate", 10, "Pruner"),

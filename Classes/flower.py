@@ -8,7 +8,7 @@ class Flower(ShrubPlants):
         return f"★{self._name} is a flower.★"
 
     def care_instructions(self):
-        return f"Flower: '{self._name}' need delicate handling with tools like: {self._essential_tool}"
+        return f"'{self._name}' need delicate handling with tools like: {self._essential_tool}"
 
 flowers_data = [
     Flower("Rose", "Rose", "0.5m", "1m", "0.5m", "1m", "Red", "Temperate", 2, "Pruner"),
