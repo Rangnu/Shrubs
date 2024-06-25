@@ -19,6 +19,6 @@ class ShrubPlants:
                 f"Width Range: {self._min_width} - {self._max_width}\n"
                 f"Color: {self._color}\n"
                 f"Climate: {self._climate}\n"
-                f"Average Lifespan: {self._average_lifespan} years\n"
-                f"Essential Tool: {self._essential_tool}")
+                f"Average Lifespan: {self._average_lifespan} years\n")
+                # f"Essential Tool: {self._essential_tool}")
 

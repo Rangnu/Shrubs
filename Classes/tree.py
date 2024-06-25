@@ -7,6 +7,9 @@ class Tree(ShrubPlants):
     def describe(self):
         return f"★{self._name} is a tree.★"
 
+    def care_instructions(self):
+        return f"Tree: '{self._name}' require strong tools like: {self._essential_tool}"
+
 trees_data = [
     Tree("Oak", "Oak Tree", "15m", "20m", "10m", "15m", "Green", "Temperate", 100, "Spade"),
     Tree("Pine", "Pine Tree", "20m", "30m", "8m", "12m", "Green", "Cold", 50, "Rake"),
